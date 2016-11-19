@@ -43,7 +43,7 @@
             <div class="up_li">66666</div>
             <div class="up_li">77777</div>
         </div>
-        <script language="javascript">
+<script language="javascript">
          function cloneObj(oldObj) { //复制对象方法
         if (typeof(oldObj) != 'object') return oldObj;
         if (oldObj == null) return oldObj;
@@ -70,8 +70,8 @@
         //delay：停留时间
         var defaultsOpt={
             element:'noticeList',
-            lh:'40',
-            speed:'20',
+            lh:'20',  //行高为20，如果一次要移动2行 就得 2*20
+            speed:'10',
             delay:'1500',
             isMove:false,
         };
@@ -102,7 +102,7 @@
         this.scrolling=function() {
             var dom=this.scrollDom;
             if (parseInt(dom.style.marginTop) % this.options.lh != 0) {
-                dom.style.marginTop = parseInt(this.scrollDom.style.marginTop) - 1 + "px";
+                dom.style.marginTop = parseInt(dom.style.marginTop) - 1 + "px";
                 if (Math.abs(parseInt(dom.style.marginTop)) >= dom.scrollHeight / 2) {
                     dom.style.marginTop = 0;
                 }
@@ -112,8 +112,6 @@
             }
         }.bind(this)
     }
-
-
         var test=new startMarquee({element:'marqueebox'});
         test.init();
         </script>
