@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	.box { width: 400px; padding: 20px; border: 40px solid #a0b3d6; background-color: #eee; overflow: hidden; }
+.loading { height: 100%; background: url(loading.gif) no-repeat center; }
+.in { width: 100px; margin: 0 auto;  border: 50px solid #beceeb; background-color: #f0f3f9; }
+[type=button] { width: 100px; height: 32px; font-size: 100%; }
+</style>
+</head>
+<body>
+    <div id="box" class="box">...</div>
+<p>
+    <input type="button" id="button" value="点击我">
+</p>
+
+<script type="text/javascript">
+	
+	// 高度无缝动画方法 
+	// time, 数值，可缺省
+var funTransitionHeight = function(element, time) { 
+    if (typeof window.getComputedStyle == "undefined") return;
+    
+    var height = window.getComputedStyle(element).height;
+
+    element.style.transition = "none";    
+   // mac Safari下，貌似auto也会触发transition, 故要none下~
+   
+    element.style.height = "auto";
+    var targetHeight = window.getComputedStyle(element).height; 
+    //这里指的是数据加载完后的内容的高度，和上面的height高度不一样
+    element.style.height = height;
+    element.offsetWidth = element.offsetWidth;
+    if (time) element.style.transition = "height "+ time +"ms";
+    element.style.height = targetHeight;
+};
+
+window.onload=function() {
+	var button=document.getElementById('button'),
+		box=document.getElementById('box');
+		funTransitionHeight(box);
+	button.onclick=function() {
+
+		setTimeout(function() {
+
+box.innerHTML='<p>We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.</p><p>We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.</p><p>We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.</p>';
+		funTransitionHeight(box,400);
+		},1000);
+		
+		
+	}
+}
+</script>
+</body>
+</html>
