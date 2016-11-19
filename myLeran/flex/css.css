@@ -1,0 +1,18 @@
+/*IE8+*/
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+	display: -webkit-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;
+	  -webkit-box-orient: vertical;
+	  -ms-flex-direction: column;
+	  -webkit-flex-direction: column;
+	  flex-direction: column;
+}
+/*IE9+*/

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+* {
+  margin:0; padding:0;
+}
+	.container {
+  display: flex;
+  flex-flow: row;
+}
+
+.left {
+  flex: 1;
+  background: red;
+}
+.right {
+  flex: 2;
+  background: blue;
+}
+ .flex-list {
+        display: -moz-box; /* 老版本语法: Firefox (buggy) */ 
+        display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+        display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+        display: -moz-flex;
+        display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+        display: -ms-flex;
+        display: flex;   /* 新版本语法： Opera 12.1, Firefox 22+ */
+
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        justify-content: space-between;
+    }
+    .flex-item {
+      display: block;
+      text-align:  center;
+    }
+    .flex-item img {
+      width:80%;
+    }
+
+    .Flexbox {
+      display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;    /* 老版本语法: Firefox (buggy) */ 
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+  display: flex;       /* 新版本语法： Opera 12.1, Firefox 22+ */
+
+    }
+
+    /*实现文本垂直居中*/
+h1 {
+  
+  -webkit-box-align: center; 
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 10rem;
+}  
+
+.parent {
+  display: flex;
+  height: 300px; /* Or whatever */
+  background: oranage;
+}
+
+.child {
+  width: 100px;  /* Or whatever */
+  height: 100px; /* Or whatever */
+  margin: auto;  /* Magic! */
+  background: #ccc
+}
+</style>
+</head>
+<body>
+
+
+  <div class="container">
+  <nav class="nav left">
+  <div class="parent">
+    
+    <div class="child">sdsd</div>
+  </div>
+
+     <div class="flex-wrap">
+        <h3>Flex两端对齐列表</h3>
+        <ul class="flex-list">
+            <li class="flex-item"><img src="http://blog.codingplayboy.com/wp-content/uploads/2016/06/cropped-profile-180x180.jpg"/><p>1</p></li>
+            <li class="flex-item"><img src="http://blog.codingplayboy.com/wp-content/uploads/2016/06/cropped-profile-180x180.jpg"/><p>2</p></li>
+            <li class="flex-item"><img src="http://blog.codingplayboy.com/wp-content/uploads/2016/06/cropped-profile-180x180.jpg"/><p>3</p></li>
+            
+        </ul>
+    </div>
+  </nav>
+ 
+  <nav class="nav right">
+    <div class="Flexbox">
+      <h1>dfdfdf</h1>
+    </div>
+  </nav>
+</div>
+</body>
+</html>

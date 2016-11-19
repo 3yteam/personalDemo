@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS实现文字停顿向上滚动代码-一流素材网</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+body,td,th {
+	color: #333333;
+	font-size: 12px;
+}
+a {
+	font-size: 12px;
+	color: #333333;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF0000;
+}
+a:active {
+	text-decoration: none;
+	color: #FF0000;
+}
+-->
+</style></head>
+<body>
+<div style="height:24px; line-height:24px; width:450px; margin:20px auto;">
+<script>
+var marqueeContent=new Array();   //滚动新闻
+marqueeContent[0]='111';
+marqueeContent[1]='22222';
+marqueeContent[2]='22222';
+marqueeContent[3]='333';
+marqueeContent[4]='444';
+marqueeContent[5]='555';
+
+var marqueeInterval=new Array();  //定义一些常用而且要经常用到的变量
+var marqueeId=0;
+var marqueeDelay=2000;
+var marqueeHeight=24;
+//接下来的是定义一些要使用到的函数
+function initMarquee() {
+    var str=marqueeContent[0];
+    document.write('<div id=marqueeBox style="overflow:hidden;height:'+marqueeHeight+'px" onmouseover="clearInterval(marqueeInterval[0])" onmouseout="marqueeInterval[0]=setInterval(\'startMarquee()\',marqueeDelay)"><div>'+str+'</div></div>');
+    marqueeId++;
+    marqueeInterval[0]=setInterval("startMarquee()",marqueeDelay);
+    }
+function startMarquee() {
+    var str=marqueeContent[marqueeId];
+        marqueeId++;
+    if(marqueeId>=marqueeContent.length) marqueeId=0;
+    if(marqueeBox.childNodes.length==1) {
+        var nextLine=document.createElement('DIV');
+        nextLine.innerHTML=str;
+        marqueeBox.appendChild(nextLine);
+        }
+    else {
+        marqueeBox.childNodes[0].innerHTML=str;
+        marqueeBox.appendChild(marqueeBox.childNodes[0]);
+        marqueeBox.scrollTop=0;
+        }
+    clearInterval(marqueeInterval[1]);
+    marqueeInterval[1]=setInterval("scrollMarquee()",24);
+    }
+function scrollMarquee() {
+    marqueeBox.scrollTop++;
+    if(marqueeBox.scrollTop%marqueeHeight==(marqueeHeight-1)){
+        clearInterval(marqueeInterval[1]);
+        }
+    }
+initMarquee();
+</script>
+</div>
+
+</body>
+</html>

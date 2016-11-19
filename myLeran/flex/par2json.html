@@ -1,0 +1,46 @@
+<!DOCTYPE html>    
+<html lang="en">    
+<head>    
+    <meta charset="UTF-8">    
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script> 
+    <script type="text/javascript" src="js/artTemplate.js"></script>  
+ 
+    <title>模版</title>    
+</head>    
+<body>    
+<div id="content"></div>
+</body>  
+
+
+<script>    
+    $(document).ready(function(){    
+       $.par2Json = function (string, overwrite) {  
+		    var obj = {}, pairs = string.split('&'), d = decodeURIComponent, name, value;  
+		    $.each(pairs, function (i, pair) {  
+		        pair = pair.split('=');  
+		        name = d(pair[0]);  
+		        value = d(pair[1]);  
+		        obj[name] = value;  
+		    });  
+		    return obj;  
+		}; 
+
+		var test=$.par2Json('a=1&b=2&c=3');
+		console.log(test);
+
+var source='<h1>{{title}}</h1><ul>{{each list as value i}}<li>索引 {{i + 1}} ：{{value}}</li>{{/each}}</ul>';
+		var data = {
+		    title: '标签',
+		    list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+		};
+		var render = template.compile(source);
+		var html = render(data);
+		document.getElementById('content').innerHTML = html;
+
+    });    
+</script>    
+</html>    
+
+
+
+ 

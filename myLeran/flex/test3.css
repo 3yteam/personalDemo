@@ -1,0 +1,42 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.wrap-page {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.header,.footer{
+  height:44px;
+  background-color: #fff;
+  text-align: center;
+  line-height:44px;
+  position:relative;
+  z-index:990;
+}
+.header{
+  border-bottom: 1px solid #f00;
+}
+.footer{
+  border-top: 1px solid #f00;
+}
+.wrap-page{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.page{
+  padding: 10px;
+}
+.page p{
+  margin-bottom: 10px;
+}

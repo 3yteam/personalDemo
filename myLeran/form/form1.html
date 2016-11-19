@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+  /*html { font-size: 5vw; }*/
+
+/*  视口宽度是 300px 时，font-size 是 12px
+视口宽度是 1000px 时，font-size 是 20px*/
+
+  .test {
+    width:50vw;
+    background: red;
+  }
+
+  html {
+  font-size: calc(112.5% + 8 / 700 * (100vw - 300px) );
+}
+</style>
+</head>
+<body>
+ <form id="myForm" action="http://www.365mini.com" method="post">
+    <input id="name" name="name" type="text" value="CodePlayer" /><br>
+    <input id="age" name="age" type="text" value="20" /><br>
+    <input type="submit" value="提交" />
+</form>
+<div id="msg"></div>
+
+
+<div class="test">测试ddgfd法国对法国队风格</div>
+<script type="text/javascript">
+  
+  $(function() {
+
+  var p = new Promise(function(resolve, reject) {
+    resolve("hello world");
+  });
+
+  p.then(function(str) {
+
+    console.log(str);
+    return 'laney';
+  }).then(function(string) {
+      console.log(string);
+  });
+
+
+var map = { name: "姓名", age: "年龄" };
+
+$("form").submit( map, function(event){
+    var labelMap = event.data;
+    var label = '';
+
+    // 循环验证所有text元素是否为空
+    $(this).find(":text").each(function(){
+        if( !this.value ){
+            label = labelMap[this.name];
+            return false;
+        }       
+    });
+    
+    if( label ){
+        // alert( label + "不能为空!" );
+        return false;
+    }
+} );
+
+  })
+</script>
+</body>
+</html>

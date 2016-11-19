@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>basic-demo</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<style type="text/css">
+	.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    -webkit-transition: opacity .9s linear;
+    -moz-transition: opacity .9s linear;
+    -o-transition: opacity .9s linear;
+    transition: opacity .9s linear;
+    opacity:0;
+    filter: alpha(opacity=0);
+}
+#bg1 {
+    background: url(https://static.tuotiansudai.com/upload/20160708/13051467975553704.png) no-repeat;
+            background-size: 100%;    
+}
+#bg2 {
+    background: url(https://static.tuotiansudai.com/upload/20161008/78171475890557239.jpg) no-repeat;
+            background-size: 100%;    
+}
+#bg3 {
+    background: url(https://static.tuotiansudai.com/upload/20161011/4561476151060636.jpg) no-repeat;
+            background-size: 100%;
+    }
+#bg4 {
+    background: url(https://static.tuotiansudai.com/upload/20160708/42441467975156254.png) no-repeat;
+            background-size: 100%;
+}
+#bg5 {
+    background: url(https://static.tuotiansudai.com/upload/20160708/98591467975197628.png) no-repeat;
+            background-size: 100%;
+}
+.fadein {
+    opacity: 100;
+    filter: alpha(opacity=100);
+}
+.pagination {
+    width: auto;
+    display: table;
+    margin: 0 auto
+}
+.pagination-panel {
+    width: 100%;
+    position: fixed;
+    bottom: 50px;
+    z-index: 100;
+    height: auto
+}
+.pagination li {
+    border-radius: 15px;
+    height: 15px;
+    width: 15px;
+    background: #ccc;
+    float: left;
+    margin-right: 10px;
+    list-style-type: none
+}
+
+.pagination li.active {
+    background: #52c6d8
+}
+.pagination li:last-child {
+    margin-right: 0
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="imgs">
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+  <div id="bg3" class="bg"></div>
+  <div id="bg4" class="bg"></div>
+  <div id="bg5" class="bg"> </div>
+</div>
+
+<div class="pagination-panel">
+  <ul class="pagination">
+    <li id="dot_0" class="page-dot"></li>
+    <li id="dot_1" class="page-dot"></li>
+    <li id="dot_2" class="page-dot"></li>
+    <li id="dot_3" class="page-dot"></li>
+    <li id="dot_4" class="page-dot"></li>
+  </ul>
+</div>
+<script type="text/javascript" src="swiper.js"></script>
+<script type="text/javascript">
+	window.onload=function() {
+		//传参
+	var imgs = new ImageSwiper(document.getElementById('imgs'), 30)
+	console.log(imgs);
+	
+	}
+</script>
+</body>
+</html>

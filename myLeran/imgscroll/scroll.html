@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页轮播原生js面对对象封装版</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<script type="text/javascript" src="scroll.js"></script>
+<script>
+
+window.onload=function(){
+var runimg=new runImg('30');
+runimg.imgurl=[
+	"<img src=https://static.tuotiansudai.com/upload/20160708/13051467975553704.png>",
+	"<img src=https://static.tuotiansudai.com/upload/20161008/78171475890557239.jpg>",
+	"<img src=https://static.tuotiansudai.com/upload/20161011/4561476151060636.jpg>"];
+runimg.info("#box");
+}
+
+</script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

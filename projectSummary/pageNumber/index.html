@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="test">
+<meta name="keywords" content="test">
+<link href="css/page.css" rel="stylesheet" > 
+   <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+   <script type="text/javascript" src="js/main.js"> </script>
+   <script type="text/javascript">
+   $(function() {
+
+ var api = {
+        list: 'http://liuyunzhuge.github.io/blog/form/dist/html/api/pageView.json',
+    };
+var getBlogItemHtml = function (row) {
+            return ['<li class="blog-entry">',
+                '    <div class="cell pl15">',
+                '        <h3 class="f14 mb5 lh18"><a href="#" class="blog-title">',
+                row.title,
+                '</a></h3>',
+                '        <p class="pt5 mb5 lh24 g3 fix">',
+                '            <img src="',
+                row.avatar,
+                '" alt="" class="bdc p1 w50 h50 l mr5">',
+                row.content,
+                '</p>',
+                '        <p class="mt10 lh20"><a href="#" class="blog-author">',
+                row.author,
+                '</a><span class="dib ml15 mr15">发布于 ',
+                row.publish_time,
+                '</span><a',
+                '                href="#" class="blog-stas">评论(',
+                row.comment,
+                ')</a><a href="#" class="blog-stas">阅读(',
+                row.read,
+                ')</a></p>',
+                '    </div>',
+                '</li>'].join('');
+        },
+         getData = function () {
+
+            pageView.disable();
+            $.ajax({
+              url: api.list,
+              type:'GET',
+              data:pageView.getParams()
+            }).done(function (res) {
+                    if (res.code == 200) {
+                      var html = [];
+                        pageView.refresh(res.data.total);
+                        res.data.rows.forEach(function (row, i) {
+                            // row.title = row.title + (pageView.data.start + i);
+                            row.title = row.title;
+                            html.push(getBlogItemHtml(row, i));
+                        });
+                        $blog_list.html(html.join(''));
+                    }
+                }).always(function(){
+                    pageView.enable();
+
+                });
+                
+        },
+        $blog_list = $('#blog_list'),
+        pageView = new PageView('#page_view', {
+                    defaultSize: 10,
+                    firstDisplay:true,
+                    lastDisplay:true,
+                    onChange: getData
+                });
+        pageView.init();
+        getData();
+   	
+    });
+
+   // 用法：
+   // 1. 首先定义渲染页面的dom标签，比如这里的id="page_view"
+   // 2. 定义默认的属性，这里
+   // {
+   //   defaultSize: 10,
+   //   onChange: getData
+   //  }
+   // 3. 实例化PageView，如：
+   // pageView = new PageView('#page_view', {
+   //                  defaultSize: 10,
+   //                  onChange: getData
+   //              })
+   // 4. 定义getData函数，通过调接口并传参，注意接口的参数通过pageView.getParams()获取，所以根据需要设定接口的传参
+   // pageIndexName: 'page', //分页参数名称
+   // pageSizeName: 'page_size', //分页大小参数名称
+   // 可以根据需要修改
+   // 5. 接口调成功以后页面数据的渲染
+
+   // 参考：http://liuyunzhuge.github.io/blog/form/dist/html/pageView.html，
+   // http://web.jobbole.com/87590/
+   </script>
+<body> 
+<div id="blog_list"></div>
+<ul id="page_view" class="page_view">
+  <!-- <li class="page "><a href="javascript:;">1</a></li> -->
+</ul>   
+
+</body>
+</html>

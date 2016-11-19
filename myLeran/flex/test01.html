@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="reset.css" rel="stylesheet">
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://localhost:5088/activity/js/libs/jQuery.md5.js"></script>
+
+<style type="text/css">
+body{
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	  -ms-flex-direction: column;
+	  -webkit-flex-direction: column;
+	  flex-direction: column;
+}
+.container {
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+
+  -ms-flex-direction:column;
+  -webkit-flex-direction: column;
+  flex-direction: column; 
+}
+.nav {
+  width: 200px;
+  background: red;
+
+}
+.flex-column {
+  -webkit-flex: 1;
+          flex: 1;
+          background: blue
+
+}
+.flex-column2 {
+  -webkit-flex: 2;
+          flex: 2;
+          background: orange;
+		  display: flex;
+           -webkit-align-items: center;
+          align-items: center;
+  		-webkit-justify-content: center;
+          justify-content: center;
+}
+
+.vertical-container {
+  height: 300px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.top {
+	height:200px;
+	position: relative;
+	background: #999;
+}
+
+</style>
+</head>
+<body>
+
+
+<form id="myForm" action="http://www.365mini.com" method="post">
+  账号<input id="uid" name="uid" type="text" /><br>
+  密码<input id="pwd" name="pwd" type="password" /><br>
+  邮箱<input id="mail" name="mail" type="text" /><br>
+  <input type="submit" value="提交" />
+</form>
+
+
+<div class="stop">
+  <p>段落文本内容
+    <input type="button" class="button" value="点击" />
+  </p>
+</div>
+
+
+<form action="http://www.365mini.com" method="post" >
+  <input id="username" name="username" type="text" /><br>
+  <input type="submit" value="提交" />
+</form>
+<a href="http://www.365mini.com">删除</a>
+
+<!-- <div class="vertical-container">
+	<p style="background: #000; color: #fff">sdsdsds</p>
+</div> -->
+<div class="top">xxx</div>
+    <div class="container">
+    
+
+    	<div class="nav">sss</div>
+    	<div class="flex-column">
+    		<section>dddd</section>
+    		<section>dddd666</section>
+    	</div>
+    	<div class="flex-column2">
+    		<section>dddd</section>
+    		<section>dddd666</section>
+    		<section>ddddddd666</section>
+    		<P>dfdfd</P>
+    	</div>
+    	
+    </div>
+
+    <script type="text/javascript">
+    (function($) {  
+
+
+var result = []; 
+for (let i = 0; i < 5; i++) { 
+  result[i] = function () { 
+    console.log(i); 
+  }; 
+} 
+
+result[0]();
+result[1]();
+result[2]();
+result[3]();
+      $("#myForm").submit( function(event) {
+      // 验证文本框uid的输入是否有效
+      if( !$("#uid").val() ){
+        alert("uid不能为空!");
+        return false;
+      }
+      if( !$("#pwd").val() ){
+        alert("pwd不能为空!");
+        return false;
+      }
+      return true;  
+    } );
+
+$("#myForm").submit( function(event) {
+  // 如果前面的表单验证返回false，无法继续验证，直接返回false
+  if( event.result === false){
+    return false;
+  }
+  
+  // 验证文本框mail的输入是否有效
+  if( !$("#mail").val() ){
+    alert("mail不能为空!");
+    return false;
+  }
+  return true;
+} );
+
+// 为所有div元素绑定click事件
+$("div.stop").click( function(event){
+  alert("div-click");
+} );
+
+//为所有p元素绑定click事件
+$("p").click( function(event){
+  alert("p-click");
+} );
+
+//为所有button元素绑定click事件
+$(".button").click( function(event){
+    alert("button-click");
+  // 阻止事件冒泡到DOM树上
+  // event.stopPropagation(); // 只执行button的click，如果注释掉该行，将执行button、p和div的click 
+} );
+
+$("form").submit( function(event){
+  
+    alert("username is required!");
+    event.preventDefault(); // 阻止默认的表单提交行为
+        // return false; // 函数的返回值为false，也可以起到阻止默认行为的效果
+  
+} );
+
+
+
+      $.fn.tooltip = function(options) {
+        // alert('test');
+          };
+
+// var tooltip = {
+// function(options){
+//   // alert('testooo');
+// }
+// };
+// $.fn.extend(tooltip);
+
+
+        $.fn.hasScrollBar = function() {  
+            return this.get(0).scrollHeight > this.height();  
+        }  
+
+       var tesst=$('.flex-column').hasScrollBar();
+       console.log(tesst);
+
+       $('body').tooltip();
+    })(jQuery);
+      
+    </script>
+</body>
+</html>
