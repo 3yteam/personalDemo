@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>jsonp</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+
+
+    <script type="text/javascript">  
+var arr2 = [
+
+　　{id:1,name:'lanyan'},
+
+　　{id:2,name:'wanming'},
+
+　　{id:3,name:'tingting'},
+
+　　{id:4,name:'songsong'},
+
+　　'test',
+
+　　'ethos'
+
+];
+    arr2.findIndex(function(data) {
+    	debugger
+		return data =="{id:1,name:'lanyan'}"
+	 })
+
+    function jsonpCallback(result) {  
+
+        for(var i in result) {  
+
+            alert(i+":"+result[i]);//循环输出a:1,b:2,etc.  
+
+        }  
+
+    }  
+
+    var JSONP=document.createElement("script");  
+
+    JSONP.type="text/javascript";  
+
+    JSONP.src="http://crossdomain.com/services.php?callback=jsonpCallback";  
+
+    document.getElementsByTagName("head")[0].appendChild(JSONP);  
+
+</script>  
+</body>
+</html>

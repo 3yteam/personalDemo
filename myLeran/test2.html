@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+   <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+    !function(){
+
+        alert('0000');
+    }();
+
+    $(function() {
+
+        $(document).ajaxStart(function() {
+                $("#loading").text("kkkk d");
+            })
+            .ajaxSend(function(event, jqxhr, settings) {
+                $("#loading").text("Triggered ajaxSend handler.");
+                if (settings.url == '/isLogin') {
+                    alert('sss');
+                }
+            }).ajaxComplete(function() {
+                $("#loading").text("4555");
+            });
+
+        $('#loading').on('click',{value:'test'},function(event) {
+        	var tre=event.target.value;
+        })
+    })
+
+    window.onload=function() {
+
+    	(function(test) {
+    		window.myname=test;
+
+    	})('laney');
+
+    	alert(window.myname);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="loading">loading</div>
+</body>
+
+</html>

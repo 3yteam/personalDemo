@@ -7,12 +7,12 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-<!-- <script type="text/javascript" src="js/bind.js"></script>
-<script type="text/javascript" src="js/AOP.js"></script>
-<script type="text/javascript" src="js/currying.js"></script>
-<script type="text/javascript" src="js/callee.js"></script>
-<script type="text/javascript" src="js/throttle.js"></script> -->
-<script type="text/javascript" src="js/caller.js"></script>
+<!-- <script type="text/javascript" src="js/bind.js"></script> -->
+<!-- <script type="text/javascript" src="js/AOP.js"></script> -->
+<!-- <script type="text/javascript" src="js/currying.js"></script> -->
+<!-- <script type="text/javascript" src="js/callee.js"></script> -->
+<!-- <script type="text/javascript" src="js/throttle.js"></script> -->
+<!-- <script type="text/javascript" src="js/caller.js"></script> -->
 <!-- <script type="text/javascript" src="js/globalFun.js"></script> -->
 
 <!-- <script type="text/javascript" src="js/imgload.js"></script> -->
@@ -21,11 +21,19 @@
 <!-- <script type="text/javascript" src="js/Array/filter.js"></script> -->
 <!-- <script type="text/javascript" src="js/Array/some.js"></script> -->
 <!-- <script type="text/javascript" src="js/Array/reduce.js"></script> -->
+<!-- <script type="text/javascript" src="js/deepClone.js"></script> -->
+
+<!-- <script type="text/javascript" src="js/random.js"></script> -->
+
+<!-- <script type="text/javascript" src="js/focus.js"></script> -->
+<script type="text/javascript" src="js/Middleware.js"></script>
 </head>
 <body>
+
+<input type="text" id="testFocus" value="123456">
    <p id="result"></p>
 
-   <script type="text/javascript">
+<!--    <script type="text/javascript">
    	
    	// 统计用户 访问网站步骤记录
 var tjSecond = 0;
@@ -37,6 +45,18 @@ window.setInterval(function () {
 tjRandom = (new Date()).valueOf();
 // 用户第一次访问页面记录部分数据
 window.onload = function () {
+    var test={
+        name:'lanyan',
+        age:'female',
+        say:function() {
+            console.log('yrss');
+        },
+        myData:[1,2,3,4],
+        myObject:{
+            test:'we'
+        }
+    };
+    var tree=deepClone(test);
     var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[]';
     var dataArr = {
         'tjRd' : tjRandom,
@@ -80,6 +100,8 @@ function getReferrer() {
     return referrer;
 }
 
-   </script>
+   </script> -->
+
+   
 </body>
 </html>

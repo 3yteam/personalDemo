@@ -7,36 +7,107 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-<script type="text/javascript">
-	
-
-window.onload=function() {
-var MyClass = function(){
-    this.name = 'sven';
-    return 'anne';
-};
-
-var obj = new MyClass();
-alert ( obj.name2 ); 
-
-
-	window.name = 'globalName';
-	var myObject = {
-	    name: 'sven',
-	    getName: function(){
-	    	var test=this.name;
-	        return this.name;
-	    }
-	};
-
-	var getName = myObject.getName;
-	console.log( getName() ); 
-
-	console.log( myObject.getName() ); 
-}
-</script>
 </head>
 <body>
-    
+    <input type="text" size="50" id="haorooms"> 
+
+    <input class="form-control" id="name" name="" type="text"  maxlength="16" placeholder="字母、数字" />  
+
+<script type="text/javascript">
+	 !function () {
+		var input = document.getElementById('haorooms');
+	    input.onkeyup = function (event) {
+	      if((event.which >= 48 && event.which <= 57) ||(event.which >= 96 && event.which <= 105 )){
+	        var v = this.value;
+	        // \S: 匹配所有非空白字符（"/s" 可匹配各个空白字符）
+	        if(/\S{5}/.test(v)){
+	            this.value = v.replace(/\s/g, '').replace(/(.{4})/g, "$1 ");
+	        }
+	      };
+	   }
+	}();
+
+		/*获取光标位置*/
+		function getCursorPos(obj)
+		{ 
+		    var CaretPos = 0; 
+		    // IE Support 
+		    if (document.selection) { 
+		        obj.focus (); //获取光标位置函数 
+		        var Sel = document.selection.createRange (); 
+		        Sel.moveStart ('character', -obj.value.length);
+		        CaretPos = Sel.text.length; 
+		    } 
+		    // Firefox/Safari/Chrome/Opera support 
+		    else if (obj.selectionStart || obj.selectionStart == '0') 
+		        CaretPos = obj.selectionEnd; 
+		    return (CaretPos); 
+		} 
+		/* 
+		定位光标 
+		*/ 
+		function setCursorPos(obj,pos) 
+		{ 
+		    if(obj.setSelectionRange) { //Firefox/Safari/Chrome/Opera
+		        obj.focus(); //
+		        obj.setSelectionRange(pos,pos); 
+		    } else if (obj.createTextRange) { // IE
+		        var range = obj.createTextRange(); 
+		        range.collapse(true); 
+		        range.moveEnd('character', pos); 
+		        range.moveStart('character', pos); 
+		        range.select(); 
+		    } 
+		} 
+
+
+		/* 
+		替换后定位光标在原处,可以这样调用onkeyup=replaceAndSetPos(this,/[^/d]/g,''); 
+		*/ 
+		function replaceAndSetPos(obj,pattern,text){ 
+		    
+		    var pos=getCursorPos(obj); //保存原始光标位置
+		    var temp=obj.value; //保存原始值 
+		    obj.value=temp.replace(pattern,text);//替换掉非法值    
+		  
+		  //截掉超过长度限制的字串（此方法要求已设定元素的maxlength属性值）
+		    var max_length = obj.getAttribute? parseInt(obj.getAttribute("maxlength")) : "";
+		    if( obj.value.length > max_length){
+		        //法一：obj.value = obj.value.substring( 0,max_length);
+				//若用户在中间进行输入，此方法则达不到效果
+		        
+		        //法二：可以满足任何情况（当超过输入了，去掉新输入的字符）
+		        var str1 = obj.value.substring( 0,pos-1 );
+		        var str2 = obj.value.substring( pos,max_length+1 );
+		        obj.value = str1 + str2;
+		        
+		    
+		    }   
+		    pos=pos-(temp.length-obj.value.length);//当前光标位置 
+		    setCursorPos(obj,pos);//设置光标 
+		} 
+
+var nameKL = document.getElementById('name');
+nameKL.onkeyup =function() {
+	replaceAndSetPos(this,/[^0-9.]/g,'');
+
+ // onkeyup="replaceAndSetPos(this,/[^\a-\z\A-\Z0-9]/g,'')" oninput="replaceAndSetPos(this,/[^\a-\z\A-\Z0-9]/g,'')"
+}
+
+nameKL.oninput =function() {
+	//只能输入一个小数点，并且只能是2位小数
+	// var value = this.value;
+
+	// var aNew;
+ //    var re = /([0-9]+\.[0-9]{2})[0-9]*/;
+ //    aNew = value.replace(re,"$1");
+	var reg = /(^((?!0[0-9])\d+(\.\d{1,2})?)$)/;
+	this.value = this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+	// n.toString().split(".")[1].length
+	replaceAndSetPos(this,/[^0-9.]/g,'');
+
+}
+
+</script>
 </body>
 </html>
