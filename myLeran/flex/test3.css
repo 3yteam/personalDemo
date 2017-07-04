@@ -14,6 +14,8 @@ body {
   -ms-flex: 1;
   -webkit-flex: 1;
   flex: 1;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
 
 .header,.footer{
@@ -30,10 +32,10 @@ body {
 .footer{
   border-top: 1px solid #f00;
 }
-.wrap-page{
+/*.wrap-page{
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
-}
+}*/
 .page{
   padding: 10px;
 }

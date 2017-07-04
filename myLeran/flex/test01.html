@@ -24,7 +24,7 @@ body{
 .container {
   display: -webkit-flex;
   display: flex;
-  flex: 1;
+  /*flex: 1;*/
 
   -ms-flex-direction:column;
   -webkit-flex-direction: column;
@@ -45,11 +45,11 @@ body{
   -webkit-flex: 2;
           flex: 2;
           background: orange;
-		  display: flex;
+		      display: flex;
            -webkit-align-items: center;
           align-items: center;
-  		-webkit-justify-content: center;
-          justify-content: center;
+  		-webkit-justify-content: space-between;
+          justify-content: space-between;
 }
 
 .vertical-container {
@@ -60,6 +60,7 @@ body{
           align-items: center;
   -webkit-justify-content: center;
           justify-content: center;
+          background: red
 }
 .top {
 	height:200px;
@@ -72,26 +73,26 @@ body{
 <body>
 
 
-<form id="myForm" action="http://www.365mini.com" method="post">
+<!-- <form id="myForm" action="http://www.365mini.com" method="post">
   账号<input id="uid" name="uid" type="text" /><br>
   密码<input id="pwd" name="pwd" type="password" /><br>
   邮箱<input id="mail" name="mail" type="text" /><br>
   <input type="submit" value="提交" />
-</form>
+</form> -->
 
 
-<div class="stop">
+<!-- <div class="stop">
   <p>段落文本内容
     <input type="button" class="button" value="点击" />
   </p>
-</div>
+</div> -->
 
 
-<form action="http://www.365mini.com" method="post" >
+<!-- <form action="http://www.365mini.com" method="post" >
   <input id="username" name="username" type="text" /><br>
   <input type="submit" value="提交" />
 </form>
-<a href="http://www.365mini.com">删除</a>
+<a href="http://www.365mini.com">删除</a> -->
 
 <!-- <div class="vertical-container">
 	<p style="background: #000; color: #fff">sdsdsds</p>
